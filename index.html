@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The DogeFather ($DOGEFATHER) | Solana</title>
+  <meta name="description" content="The Dogefather is a memecoin that was created as a tribute to Elon Musk and his influence on the popularity of Dogecoin and D.O.G.E." />
+  <meta property="og:title" content="The DogeFather ($DOGEFATHER)" />
+  <meta property="og:description" content="The Dogefather is a memecoin that was created as a tribute to Elon Musk and his influence on the popularity of Dogecoin and D.O.G.E." />
+  <meta property="og:image" content="banner.png" />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ["Cinzel", "serif"],
+            sans: ["Outfit", "system-ui", "sans-serif"],
+          },
+          colors: {
+            gold: "#e4b43a",
+            cream: "#f6e7b2",
+            silver: "#e7e7e7",
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+
+    body {
+      font-family: Outfit, system-ui, sans-serif;
+      background: #07080d;
+    }
+
+    .flag {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: repeating-linear-gradient(
+        to bottom,
+        #6d2432 0,
+        #6d2432 7.6923%,
+        #10141c 7.6923%,
+        #10141c 15.3846%
+      );
+    }
+
+    .canton {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 42%;
+      height: 53.85%;
+      background-color: #0a1733;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 56'%3E%3Cpath fill='%23f7f4ee' fill-opacity='0.88' d='M32 10l3.1 8.2 8.6.4-6.6 5.4 2.1 8.4L32 27.6l-7.2 4.8 2.1-8.4-6.6-5.4 8.6-.4z'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 56'%3E%3Cpath fill='%23f7f4ee' fill-opacity='0.72' d='M32 10l3.1 8.2 8.6.4-6.6 5.4 2.1 8.4L32 27.6l-7.2 4.8 2.1-8.4-6.6-5.4 8.6-.4z'/%3E%3C/svg%3E");
+      background-size: 64px 56px, 64px 56px;
+      background-position: 6px 4px, 38px 32px;
+      box-shadow: inset -18px 0 28px rgba(0, 0, 0, 0.28);
+    }
+
+    .veil {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse at 50% 18%, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.62) 72%),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.15) 30%, rgba(0, 0, 0, 0.45));
+      pointer-events: none;
+    }
+
+    .silver-text {
+      background: linear-gradient(180deg, #ffffff 0%, #e6e6e6 42%, #9a9a9a 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .gold-text {
+      background: linear-gradient(180deg, #fff6d4 0%, #f0c85a 38%, #c8922a 78%, #ffe7a3 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .glass {
+      background: rgba(6, 7, 12, 0.72);
+      border: 1px solid rgba(228, 180, 58, 0.28);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(10px);
+    }
+
+    .buy-btn {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, #fff1c2 0%, #f0c14b 42%, #b8860b 100%);
+      color: #1a1203;
+      box-shadow: 0 10px 30px rgba(228, 180, 58, 0.35);
+    }
+
+    .buy-btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.55) 50%, transparent 70%);
+      transform: translateX(-130%);
+      animation: shine 3.8s ease-in-out infinite;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: ticker 32s linear infinite;
+    }
+
+    .stripe-bar {
+      height: 10px;
+      background: repeating-linear-gradient(
+        to bottom,
+        #8d2a38 0 2px,
+        #d9d4c8 2px 4px
+      );
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    @keyframes shine {
+      0%, 55% { transform: translateX(-130%); }
+      100% { transform: translateX(130%); }
+    }
+
+    #tribute,
+    #how-to-buy,
+    #chart {
+      scroll-margin-top: 5.5rem;
+    }
+
+    iframe {
+      background: #0c1018;
+    }
+
+    @media (max-width: 640px) {
+      .canton {
+        width: 58%;
+        height: 34%;
+        background-size: 42px 36px, 42px 36px;
+        background-position: 4px 3px, 25px 21px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track,
+      .buy-btn::after {
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen text-silver antialiased">
+  <div class="flag" aria-hidden="true"><div class="canton"></div></div>
+  <div class="veil" aria-hidden="true"></div>
+
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-black/55 backdrop-blur-md">
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
+      <a href="#top" class="flex items-center gap-3">
+        <img src="logo.png" width="250" height="250" alt="" class="h-11 w-11 rounded-full object-cover ring-2 ring-gold" />
+        <span class="leading-tight">
+          <span class="block font-display text-sm font-bold text-white sm:text-base">The DogeFather</span>
+          <span class="block text-[10px] font-semibold tracking-[0.28em] text-gold">DOGEFATHER</span>
+        </span>
+      </a>
+      <nav class="hidden items-center gap-6 text-sm font-medium text-white/80 md:flex">
+        <a href="#tribute" class="transition hover:text-cream">Tribute</a>
+        <a href="#how-to-buy" class="transition hover:text-cream">How to Buy</a>
+        <a href="#chart" class="transition hover:text-cream">Chart</a>
+      </nav>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="https://x.com/dogefathersol_x" target="_blank" rel="noopener noreferrer" class="rounded-lg transition hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold" aria-label="The DogeFather on X">
+          <img src="x.png" width="554" height="554" alt="" class="h-9 w-9 rounded-lg ring-1 ring-white/20" />
+        </a>
+        <a href="https://t.me/dogefathersol_portal" target="_blank" rel="noopener noreferrer" class="rounded-full transition hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold" aria-label="The DogeFather on Telegram">
+          <img src="tg.png" width="975" height="997" alt="" class="h-9 w-9 rounded-full" />
+        </a>
+        <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer" class="buy-btn hidden rounded-full px-4 py-2 text-sm font-bold sm:inline-flex">Buy Now</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="pb-24 md:pb-0">
+    <section class="mx-auto max-w-5xl px-4 pb-8 pt-10 text-center sm:pt-14">
+      <div class="relative mx-auto mb-6 h-48 w-48 sm:h-56 sm:w-56">
+        <svg class="h-full w-full" viewBox="0 0 220 220" aria-hidden="true">
+          <circle cx="110" cy="110" r="104" fill="none" stroke="#e4b43a" stroke-width="1.4" />
+          <circle cx="110" cy="110" r="96" fill="none" stroke="#d5d5d5" stroke-width="0.6" />
+          <defs>
+            <path id="topArc" d="M36,110 A74,74 0 0,1 184,110" />
+          </defs>
+          <text fill="#f6e7b2" font-family="Cinzel, serif" font-size="13" letter-spacing="2.2">
+            <textPath href="#topArc" startOffset="50%" text-anchor="middle">THE DOGEFATHER</textPath>
+          </text>
+          <g fill="#f6e7b2">
+            <path d="M110 176l1.5 4 4.2.2-3.3 2.6 1 4.1L110 184.4 106.6 186.9l1-4.1-3.3-2.6 4.2-.2z" />
+            <path d="M86 170l1.2 3.2 3.4.2-2.6 2.1.8 3.3L86 176.8l-2.8 2 0.8-3.3-2.6-2.1 3.4-.2z" />
+            <path d="M134 170l1.2 3.2 3.4.2-2.6 2.1.8 3.3L134 176.8l-2.8 2 0.8-3.3-2.6-2.1 3.4-.2z" />
+          </g>
+        </svg>
+        <img src="logo.png" width="250" height="250" alt="The DogeFather logo" class="absolute left-1/2 top-1/2 h-[7.5rem] w-[7.5rem] -translate-x-1/2 -translate-y-1/2 rounded-full object-cover ring-2 ring-gold sm:h-36 sm:w-36" />
+      </div>
+
+      <p class="text-xs font-semibold uppercase tracking-[0.42em] text-cream/90">Solana Memecoin</p>
+      <h1 class="silver-text mt-3 font-display text-5xl font-black leading-none sm:text-7xl">The DogeFather</h1>
+      <p class="gold-text mt-4 font-display text-sm font-bold tracking-[0.42em] sm:text-base">$DOGEFATHER</p>
+
+      <img src="banner.png" width="1500" height="500" alt="The DogeFather banner" class="mx-auto mt-8 w-full max-w-4xl rounded-2xl shadow-[0_24px_70px_rgba(0,0,0,0.55)] ring-1 ring-gold/50" />
+
+      <div class="glass mx-auto mt-8 max-w-3xl rounded-3xl px-5 py-6 sm:px-8">
+        <p class="text-base leading-relaxed text-white/90 sm:text-lg">
+          The Dogefather is a memecoin that was created as a tribute to Elon Musk and his influence on the popularity of Dogecoin and D.O.G.E.
+        </p>
+      </div>
+
+      <div class="glass mx-auto mt-5 flex max-w-3xl flex-col items-stretch gap-3 rounded-2xl p-3 sm:flex-row sm:items-center">
+        <div class="min-w-0 flex-1 px-3 py-1 text-left">
+          <p class="text-[10px] font-semibold uppercase tracking-[0.28em] text-gold">Contract Address</p>
+          <p id="ca-display" class="truncate font-mono text-sm text-white sm:text-base">TBA</p>
+        </div>
+        <button type="button" data-copy="TBA" class="copy-btn shrink-0 rounded-xl border border-gold/50 bg-gold/10 px-5 py-3 text-sm font-semibold text-cream transition hover:bg-gold hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold">
+          <span data-label>Copy CA</span>
+        </button>
+      </div>
+
+      <div class="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer" class="buy-btn inline-flex w-full items-center justify-center rounded-full px-8 py-3.5 text-base font-bold sm:w-auto">Buy Now</a>
+        <a href="https://dexscreener.com/solana/TBA" target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center rounded-full border border-white/25 bg-black/80 px-8 py-3.5 text-base font-semibold text-white transition hover:border-gold hover:text-cream sm:w-auto">Chart</a>
+      </div>
+
+      <div class="mt-6 flex items-center justify-center gap-3">
+        <a href="https://x.com/dogefathersol_x" target="_blank" rel="noopener noreferrer" class="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition hover:border-gold/70">
+          <img src="x.png" width="554" height="554" alt="" class="h-7 w-7 rounded-md" />
+          X
+        </a>
+        <a href="https://t.me/dogefathersol_portal" target="_blank" rel="noopener noreferrer" class="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition hover:border-gold/70">
+          <img src="tg.png" width="975" height="997" alt="" class="h-7 w-7 rounded-full" />
+          Telegram
+        </a>
+      </div>
+    </section>
+
+    <div class="overflow-hidden border-y border-gold/25 bg-black/55 py-3">
+      <div class="marquee-track">
+        <p class="px-4 text-sm font-semibold tracking-[0.28em] text-cream/90">★ THE DOGEFATHER ★ $DOGEFATHER ★ SOLANA ★ TRIBUTE TO ELON MUSK ★ DOGECOIN ★ D.O.G.E ★ BLACK TIE ★ GOLD COIN ★</p>
+        <p class="px-4 text-sm font-semibold tracking-[0.28em] text-cream/90" aria-hidden="true">★ THE DOGEFATHER ★ $DOGEFATHER ★ SOLANA ★ TRIBUTE TO ELON MUSK ★ DOGECOIN ★ D.O.G.E ★ BLACK TIE ★ GOLD COIN ★</p>
+      </div>
+    </div>
+
+    <section id="tribute" class="mx-auto max-w-6xl px-4 py-16">
+      <div class="mb-8 flex items-center gap-4">
+        <div class="stripe-bar w-16 rounded-full"></div>
+        <h2 class="font-display text-3xl font-bold text-white sm:text-4xl">The Tribute</h2>
+      </div>
+      <div class="grid gap-6 lg:grid-cols-[1.4fr_0.8fr]">
+        <article class="glass rounded-3xl p-6 sm:p-10">
+          <p class="font-display text-xl leading-relaxed text-cream sm:text-2xl">
+            The Dogefather is a memecoin that was created as a tribute to Elon Musk and his influence on the popularity of Dogecoin and D.O.G.E.
+          </p>
+          <p class="mt-5 leading-relaxed text-white/80">
+            Dogecoin became a global symbol because Elon kept it in the conversation. D.O.G.E carried those same letters into a new chapter of the culture. The DogeFather puts both on Solana: a tuxedo on the seal, a gold coin in the name, and a community that settles at chain speed.
+          </p>
+          <p class="mt-4 leading-relaxed text-white/80">
+            Buy through the official Pump.fun swap, read the tape on Dexscreener, and copy the contract address from this page before you trade.
+          </p>
+        </article>
+        <aside class="glass rounded-3xl p-6 sm:p-8">
+          <p class="text-xs font-semibold uppercase tracking-[0.32em] text-gold">The Record</p>
+          <dl class="mt-5 space-y-4">
+            <div class="border-b border-white/10 pb-4">
+              <dt class="text-xs uppercase tracking-widest text-white/50">Name</dt>
+              <dd class="mt-1 font-display text-lg text-white">The DogeFather</dd>
+            </div>
+            <div class="border-b border-white/10 pb-4">
+              <dt class="text-xs uppercase tracking-widest text-white/50">Symbol</dt>
+              <dd class="mt-1 font-display text-lg text-cream">DOGEFATHER</dd>
+            </div>
+            <div class="border-b border-white/10 pb-4">
+              <dt class="text-xs uppercase tracking-widest text-white/50">Chain</dt>
+              <dd class="mt-1 text-lg text-white">Solana</dd>
+            </div>
+            <div>
+              <dt class="text-xs uppercase tracking-widest text-white/50">Contract</dt>
+              <dd class="mt-1 flex items-center justify-between gap-3">
+                <span class="font-mono text-white">TBA</span>
+                <button type="button" data-copy="TBA" class="copy-btn rounded-lg border border-gold/40 px-3 py-1.5 text-xs font-semibold text-cream transition hover:bg-gold hover:text-black">
+                  <span data-label>Copy</span>
+                </button>
+              </dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+
+      <div class="mt-6 grid gap-4 md:grid-cols-3">
+        <article class="glass rounded-2xl p-6">
+          <p class="font-display text-gold">01</p>
+          <h3 class="mt-2 font-display text-xl text-white">Elon Musk</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/75">The tribute starts with the man who carried Dogecoin from a joke into a worldwide signal.</p>
+        </article>
+        <article class="glass rounded-2xl p-6">
+          <p class="font-display text-gold">02</p>
+          <h3 class="mt-2 font-display text-xl text-white">Dogecoin &amp; D.O.G.E</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/75">One coin taught the internet the face. D.O.G.E made the letters famous all over again.</p>
+        </article>
+        <article class="glass rounded-2xl p-6">
+          <p class="font-display text-gold">03</p>
+          <h3 class="mt-2 font-display text-xl text-white">Solana</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/75">The family moves on Solana. Swaps are quick, fees stay small, and the chart stays public.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="how-to-buy" class="mx-auto max-w-6xl px-4 pb-16">
+      <div class="mb-3 flex items-center gap-4">
+        <div class="stripe-bar w-16 rounded-full"></div>
+        <h2 class="font-display text-3xl font-bold text-white sm:text-4xl">How to Buy</h2>
+      </div>
+      <p class="mb-8 max-w-2xl text-white/75">Four steps to buy $DOGEFATHER with SOL. The swap is already pointed at the token.</p>
+      <ol class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <li class="glass rounded-2xl p-6">
+          <div class="flex h-12 w-12 items-center justify-center rounded-full border border-gold/50 bg-gold/10 font-display text-lg text-cream">1</div>
+          <h3 class="mt-4 font-display text-xl text-white">Create a Wallet</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/75">Install Phantom or Solflare. Create a Solana wallet and keep the recovery phrase somewhere only you can open.</p>
+        </li>
+        <li class="glass rounded-2xl p-6">
+          <div class="flex h-12 w-12 items-center justify-center rounded-full border border-gold/50 bg-gold/10 font-display text-lg text-cream">2</div>
+          <h3 class="mt-4 font-display text-xl text-white">Fund with SOL</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/75">Buy SOL and send it to your wallet address. Leave a little extra so the network fee never stops the swap.</p>
+        </li>
+        <li class="glass rounded-2xl p-6">
+          <div class="flex h-12 w-12 items-center justify-center rounded-full border border-gold/50 bg-gold/10 font-display text-lg text-cream">3</div>
+          <h3 class="mt-4 font-display text-xl text-white">Swap for $DOGEFATHER</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/75">Press Buy Now. Pump.fun opens with SOL as the input and $DOGEFATHER as the output. Enter an amount and review the quote.</p>
+        </li>
+        <li class="glass rounded-2xl p-6">
+          <div class="flex h-12 w-12 items-center justify-center rounded-full border border-gold/50 bg-gold/10 font-display text-lg text-cream">4</div>
+          <h3 class="mt-4 font-display text-xl text-white">Confirm the Buy</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/75">Approve the transaction in your wallet. When it confirms, copy the contract address and match it before you trade again.</p>
+        </li>
+      </ol>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer" class="buy-btn inline-flex items-center justify-center rounded-full px-8 py-3.5 font-bold">Buy Now</a>
+        <a href="https://dexscreener.com/solana/TBA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full border border-white/25 bg-black/80 px-8 py-3.5 font-semibold text-white transition hover:border-gold hover:text-cream">Chart</a>
+      </div>
+    </section>
+
+    <section id="chart" class="mx-auto max-w-6xl px-4 pb-20">
+      <div class="mb-3 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <div class="mb-3 flex items-center gap-4">
+            <div class="stripe-bar w-16 rounded-full"></div>
+            <h2 class="font-display text-3xl font-bold text-white sm:text-4xl">Live Chart</h2>
+          </div>
+          <p class="text-white/75">Dexscreener tape for $DOGEFATHER on Solana.</p>
+        </div>
+        <a href="https://dexscreener.com/solana/TBA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full border border-gold/50 px-5 py-2.5 text-sm font-semibold text-cream transition hover:bg-gold hover:text-black">Open Chart</a>
+      </div>
+      <div class="glass h-[460px] overflow-hidden rounded-3xl sm:h-[580px] lg:h-[680px]">
+        <iframe
+          title="Dexscreener chart for The DogeFather"
+          src="https://dexscreener.com/solana/TBA?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=2&chartType=usd&interval=15"
+          class="h-full w-full border-0"
+          loading="lazy"
+        ></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 bg-black/70 pb-24 md:pb-0">
+    <div class="mx-auto flex max-w-6xl flex-col items-center gap-5 px-4 py-10 text-center">
+      <img src="logo.png" width="250" height="250" alt="" class="h-16 w-16 rounded-full object-cover ring-2 ring-gold" />
+      <div>
+        <p class="font-display text-xl text-white">The DogeFather</p>
+        <p class="mt-1 text-xs font-semibold tracking-[0.32em] text-gold">DOGEFATHER</p>
+      </div>
+      <div class="flex gap-3">
+        <a href="https://x.com/dogefathersol_x" target="_blank" rel="noopener noreferrer" aria-label="The DogeFather on X">
+          <img src="x.png" width="554" height="554" alt="" class="h-10 w-10 rounded-lg ring-1 ring-white/20 transition hover:scale-105" />
+        </a>
+        <a href="https://t.me/dogefathersol_portal" target="_blank" rel="noopener noreferrer" aria-label="The DogeFather on Telegram">
+          <img src="tg.png" width="975" height="997" alt="" class="h-10 w-10 rounded-full transition hover:scale-105" />
+        </a>
+      </div>
+      <p class="max-w-xl text-xs leading-relaxed text-white/50">$DOGEFATHER is a memecoin tribute. Cryptocurrency can be volatile. This website is for entertainment and does not offer financial advice.</p>
+      <p class="text-xs text-white/40">© <span id="year">2026</span> The DogeFather. The family sends its regards.</p>
+    </div>
+  </footer>
+
+  <div class="fixed inset-x-0 bottom-0 z-40 flex gap-2 border-t border-white/10 bg-black/80 p-3 backdrop-blur-md md:hidden">
+    <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer" class="buy-btn flex-1 rounded-full py-3 text-center text-sm font-bold">Buy Now</a>
+    <a href="https://dexscreener.com/solana/TBA" target="_blank" rel="noopener noreferrer" class="flex-1 rounded-full border border-white/25 py-3 text-center text-sm font-semibold text-white">Chart</a>
+  </div>
+
+  <p id="copy-status" class="sr-only" role="status"></p>
+
+  <script>
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+
+    async function copyText(value) {
+      try {
+        await navigator.clipboard.writeText(value);
+      } catch (err) {
+        const field = document.createElement("textarea");
+        field.value = value;
+        field.setAttribute("readonly", "");
+        field.style.position = "fixed";
+        field.style.left = "-9999px";
+        document.body.appendChild(field);
+        field.select();
+        document.execCommand("copy");
+        field.remove();
+      }
+    }
+
+    document.querySelectorAll("[data-copy]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const value = button.getAttribute("data-copy") || "";
+        const label = button.querySelector("[data-label]");
+        const status = document.getElementById("copy-status");
+        copyText(value);
+        if (label) {
+          const original = label.textContent;
+          label.textContent = "Copied";
+          if (status) status.textContent = "Contract address copied";
+          window.setTimeout(() => {
+            label.textContent = original;
+            if (status) status.textContent = "";
+          }, 1600);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
